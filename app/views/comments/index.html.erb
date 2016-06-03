@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Comments
+    <a href="/comments/new" class="btn btn-lg btn-success">New Comment</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Friend</th>
+        <th>Note</th>
+        <th>Actions</th>
+      </tr>
+
+
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><a href="/friends/<%= comment.friend_id %>">
+          <%= Friend.find_by(:id => comment.friend_id).name %></a></td>
+        <td><%= comment.note %></td>
+        <td>
+          <a href="/comments/<%= comment.id %>" class="btn btn-default">Show</a>
+          <a href="/comments/<%= comment.id %>/edit" class="btn btn-default">Edit</a>
+          <a href="/delete_comment/<%= comment.id %>" class="btn btn-default" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

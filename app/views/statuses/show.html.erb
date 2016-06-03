@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Status #<%= @status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Friend</dt>
+      <dd><%= Friend.find_by(:id => @status.friend_id).name %></dd>
+
+      <dt>Delivery Status</dt>
+      <dd><%= @status.sentskip %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/statuses" class="btn btn-default">
+        Back
+      </a>
+      <a href="/statuses/<%= @status.id %>/edit" class="btn btn-default">
+        Edit
+      </a>
+      <a href="/delete_status/<%= @status.id %>" class="btn btn-default" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

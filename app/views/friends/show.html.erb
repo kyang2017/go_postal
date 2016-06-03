@@ -1,0 +1,80 @@
+<div class="page-header">
+  <h3>Friend #<%= @friend.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+
+      <dt>Name</dt>
+      <dd><%= @friend.name %></dd>
+
+      <dt>Month</dt>
+      <dd><%= @friend.month %></dd>
+
+      <dt>Day</dt>
+      <dd><%= @friend.day %></dd>
+
+      <dt>Year</dt>
+      <dd><%= @friend.year %></dd>
+
+      <dt>Address</dt>
+      <dd><%= @friend.address %></dd>
+
+      <dt>Comments</dt>
+      <dd><% Comment.where(:friend_id => @friend.id).each do |comment| %>
+        <li><%= comment.note %></li>
+        <% end %>
+      </dd>
+
+      <dt>Previous Delivery Status</dt>
+      <dd><% Status.where(:friend_id => @friend.id).each do |status| %>
+        <li><%= status.sentskip %> <%= time_ago_in_words(status.created_at) %></</li>
+        <% end %>
+      </dd>
+    </dl>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_comment" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Input for friend_id -->
+      <input type="hidden" name="friend_id" value="<%= @friend.id %>">
+
+      <!-- Label and input for note -->
+      <div class="form-group">
+        <label for="note" class="control-label">
+          Add a note
+        </label>
+
+        <textarea id="note" name="note" placeholder="Note" class="form-control" rows="3"><%= @comment.note %></textarea>
+      </div>
+
+      <button class="btn btn-success">
+        Create Comment
+      </button>
+      or
+      <a href="/comments">Cancel</a>
+    </form>
+  </div>
+</div>
+<br>
+
+<div class="btn-group btn-group-justified">
+  <a href="/friends" class="btn btn-default">
+    Back
+  </a>
+  <a href="/friends/<%= @friend.id %>/edit" class="btn btn-default">
+    Edit
+  </a>
+  <a href="/delete_friend/<%= @friend.id %>" class="btn btn-default" rel="nofollow">
+    Delete
+  </a>
+</div>

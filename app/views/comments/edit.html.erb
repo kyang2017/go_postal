@@ -1,0 +1,48 @@
+<!-- Validation failure messages -->
+<% if @comment.errors.any? %>
+<% @comment.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Comment #<%= @comment.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_comment/<%= @comment.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+      <!-- Label and input for friend_id -->
+      <div class="form-group">
+        <label for="friend_id" class="control-label">
+          Friend
+        </label>
+
+      <%= select_tag(:friend_id, options_from_collection_for_select(Friend.all, :id, :name, @comment.friend_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for note -->
+      <div class="form-group">
+        <label for="note" class="control-label">
+          Note
+        </label>
+
+        <textarea id="note" name="note" placeholder="Note" class="form-control" rows="3"><%= @comment.note %></textarea>
+      </div>
+
+
+      <button class="btn btn-warning">
+        Update Comment
+      </button>
+      or
+      <a href="/comments/<%= @comment.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

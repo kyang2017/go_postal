@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h3>Comment #<%= @comment.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Friend</dt>
+      <dd><%= Friend.find_by(:id => @comment.friend_id).name %></dd>
+
+      <dt>Note</dt>
+      <dd><%= @comment.note %></dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/comments" class="btn btn-default">
+        Back
+      </a>
+      <a href="/comments/<%= @comment.id %>/edit" class="btn btn-default">
+        Edit
+      </a>
+      <a href="/delete_comment/<%= @comment.id %>" class="btn btn-default" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

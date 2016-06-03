@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @status.errors.any? %>
+  <% @status.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Status #<%= @status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_status/<%= @status.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for friend_id -->
+      <div class="form-group">
+        <label for="friend_id" class="control-label">
+          Friend
+        </label>
+
+        <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @status.friend_id %>">
+      </div>
+
+      <!-- Label and input for sentskip -->
+      <div class="form-group">
+        <label for="sentskip" class="control-label">
+          Sentskip
+        </label>
+
+        <input type="text" id="sentskip" name="sentskip" placeholder="Sentskip" class="form-control" value="<%= @status.sentskip %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Status
+      </button>
+      or
+      <a href="/statuses/<%= @status.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

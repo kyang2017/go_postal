@@ -1,0 +1,79 @@
+<!-- Validation failure messages -->
+<% if @friend.errors.any? %>
+<% @friend.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Friend #<%= @friend.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_friend/<%= @friend.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @friend.name %>">
+      </div>
+
+
+
+
+      <!-- Label and input for month -->
+      <div class="form-group">
+        <label for="month" class="control-label">
+          Month
+        </label>
+
+        <input type="text" id="month" name="month" placeholder="Month" class="form-control" value="<%= @friend.month %>">
+      </div>
+
+      <!-- Label and input for day -->
+      <div class="form-group">
+        <label for="day" class="control-label">
+          Day
+        </label>
+
+        <input type="text" id="day" name="day" placeholder="Day" class="form-control" value="<%= @friend.day %>">
+      </div>
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @friend.year %>">
+      </div>
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @friend.address %>">
+      </div>
+
+
+
+
+
+      <button class="btn btn-warning">
+        Update Friend
+      </button>
+      or
+      <a href="/friends/">Cancel</a>
+    </form>
+  </div>
+</div>

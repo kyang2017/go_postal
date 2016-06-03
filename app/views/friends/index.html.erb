@@ -1,0 +1,128 @@
+<div class="page-header">
+  <h1>
+    Friends
+    <a href="/friends/new" class="btn btn-lg btn-success">New Friend</a>
+  </h1>
+</div>
+
+<div class="row">
+  <% @coming_up.each do |friend| %>
+  <div class="col-md-3">
+    <div class="panel panel-default postcard">
+      <div class="panel-heading">
+        <a href="/friends/<%= friend.id %>"><h3 class="panel-title"><%= friend.name %> <i class="fa fa-search-plus" aria-hidden="true"></i></h3></a>
+      </div>
+      <div class="panel-body">
+        <p><%= friend.month %>/<%= friend.day %>/<%= friend.year %></p>
+        <p><%= friend.address %></p>
+
+        <% if friend.status_this_year %>
+        <!-- true -->
+        <% else %><a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <% end %>
+        <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+  <% @the_rest_year.each do |friend| %>
+
+  <div class="col-md-3">
+    <div class="panel panel-default postcard">
+      <div class="panel-heading">
+        <a href="/friends/<%= friend.id %>"><h3 class="panel-title"><%= friend.name %> <i class="fa fa-search-plus" aria-hidden="true"></i></h3></a>
+      </div>
+      <div class="panel-body">
+        <p><%= friend.month %>/<%= friend.day %>/<%= friend.year %></p>
+        <p><%= friend.address %></p>
+
+        <% if friend.status_this_year %>
+        <!-- true -->
+        <% else %>
+        <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <% end %>
+        <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+
+
+  <% @the_past_year.each do |friend| %>
+  <div class="col-md-3">
+    <div class="panel panel-default postcard">
+      <div class="panel-heading">
+        <a href="/friends/<%= friend.id %>"> <h3 class="panel-title"><%= friend.name %> <i class="fa fa-search-plus" aria-hidden="true"></i></h3></a>
+      </div>
+      <div class="panel-body">
+        <p><%= friend.month %>/<%= friend.day %>/<%= friend.year %></p>
+        <p><%= friend.address %></p>
+
+        <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% @just_past.each do |friend| %>
+  <div class="col-md-3">
+    <div class="panel panel-default postcard">
+      <div class="panel-heading">
+        <a href="/friends/<%= friend.id %>"><h3 class="panel-title"><%= friend.name %> <i class="fa fa-search-plus" aria-hidden="true"></i></h3></a>
+      </div>
+      <div class="panel-body">
+        <p><%= friend.month %>/<%= friend.day %>/<%= friend.year %></p>
+        <p><%= friend.address %></p>
+
+        <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        <!-- <a href="/delete_friend/<%= friend.id %>" class="btn btn-default" rel="nofollow">Delete</a> -->
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Add a Friend
+        </h3>
+      </div>
+      <div class="panel-body">
+
+
+        <form action="/create_friend" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for name -->
+          <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+
+          <!-- Label and input for month -->
+          <input type="text" id="month" name="month" placeholder="Month" class="form-control">
+
+          <!-- Label and input for day -->
+          <input type="text" id="day" name="day" placeholder="Day" class="form-control" >
+
+          <!-- Label and input for year -->
+          <input type="text" id="year" name="year" placeholder="Year" class="form-control">
+
+          <!-- Label and input for address -->
+          <input type="text" id="address" name="address" placeholder="Address" class="form-control">
+
+          <button>Submit</button>
+
+        </form>
+      </div>
+
+    </div>
