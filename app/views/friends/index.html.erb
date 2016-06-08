@@ -19,7 +19,7 @@
         <% if friend.status_this_year %>
         <!-- true -->
         <% else %><a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning">Skip</a>
         <% end %>
         <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
       </div>
@@ -43,7 +43,7 @@
         <!-- true -->
         <% else %>
         <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/skip/<%= friend.id %>/" class="btn btn-warning">Skip</a>
         <% end %>
         <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
       </div>
@@ -65,7 +65,7 @@
         <p><%= friend.address %></p>
 
         <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning">Skip</a>
         <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
       </div>
     </div>
@@ -83,7 +83,7 @@
         <p><%= friend.address %></p>
 
         <a href="/send/<%= friend.id %>/" class="btn btn-success"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-        <a href="/skip/<%= friend.id %>" class="btn btn-warning disabled">Skip</a>
+        <a href="/skip/<%= friend.id %>" class="btn btn-warning">Skip</a>
         <a href="/friends/<%= friend.id %>/edit" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         <!-- <a href="/delete_friend/<%= friend.id %>" class="btn btn-default" rel="nofollow">Delete</a> -->
       </div>

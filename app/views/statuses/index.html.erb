@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Statuses
-    <a href="/statuses/new" class="btn btn-lg btn-success">New Status</a>
+    
   </h1>
 </div>
 
@@ -20,8 +20,6 @@
         <td><%= Friend.find_by(:id => status.friend_id).name %></td>
         <td><%= status.sentskip %></td>
         <td>
-          <a href="/statuses/<%= status.id %>" class="btn btn-default">Show</a>
-          <a href="/statuses/<%= status.id %>/edit" class="btn btn-default">Edit</a>
           <a href="/delete_status/<%= status.id %>" class="btn btn-default" rel="nofollow">Delete</a>
         </td>
       </tr>

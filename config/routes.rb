@@ -49,12 +49,13 @@ Rails.application.routes.draw do
   get "/comments/:id/edit", :controller => "comments", :action => "edit"
   post "/update_comment/:id", :controller => "comments", :action => "update"
 
+  #STATUS
+  get "/send/:friend_id", :controller => "statuses", :action => "deliver"
+  get "/skip/:friend_id", :controller => "statuses", :action => "skip"
+
   # DELETE
   get "/delete_comment/:id", :controller => "comments", :action => "destroy"
 
-  get "/send/:friend_id", :controller => "statuses", :action => "deliver"
-
-  get "/skip/:friend_id", :controller => "statuses", :action => "skip"
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.

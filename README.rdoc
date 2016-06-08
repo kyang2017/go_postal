@@ -1,7 +1,21 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Go Postal
+
+##Setup
+
+1. Clone and open the code.
+1. `bundle install`
+1. Generate resources:
+
+        rails generate starter:resource status friend_id:integer sentskip:string
+        rails generate starter:resource comment note:text friend_id:integer
+        rails generate starter:resource friend address:string year:integer day:integer name:string month:string
+
+1. `rake db:migrate`
+
+
+rails generate starter:style lumen
 
 Things you may want to cover:
 

@@ -54,7 +54,7 @@ class StatusesController < ApplicationController
     @status.sentskip = "Sent"
 
     if @status.save
-      redirect_to "/friends", :notice => "Status created successfully."
+      redirect_to "/friends", :notice => "You sent a card!"
     else
       render 'new'
     end
